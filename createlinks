@@ -1,0 +1,20 @@
+#!/usr/bin/perl -w
+
+use esmith::Build::CreateLinks qw(:all);
+
+# actions to do
+
+event_templates('nethserver-acme-dns-update', qw(
+		/etc/acme-dns/config.cfg
+		/etc/shorewall/rules
+));
+
+event_actions('nethserver-acme-dns-update', qw(
+		initialize-default-databases 00
+		runlevel-adjust 10'
+));
+		
+event_services('nethserver-acme-dns-update', qw(
+               acme-dns restart
+               shorewall restart
+));

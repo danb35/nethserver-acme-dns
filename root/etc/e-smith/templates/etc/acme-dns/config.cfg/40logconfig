@@ -1,0 +1,17 @@
+{
+
+my $loglevel = (${'acme-dns'}{'Debug'} && ${'acme-dns'}{Debug} eq 'enabled') ? 'debug' : 'warning';
+
+ $OUT .= <<EOF
+
+[logconfig]
+# logging level: "error", "warning", "info" or "debug"
+loglevel = "$loglevel"
+# possible values: stdout, TODO file & integrations
+logtype = "stdout"
+# file path for logfile TODO
+# logfile = "./acme-dns.log"
+# format, either "json" or "text"
+logformat = "text"
+EOF
+}

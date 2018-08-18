@@ -1,0 +1,5 @@
+[database]
+# Database engine to use, sqlite3 or postgres
+engine = "sqlite3"
+connection = "/etc/acme-dns/acme-dns.db"
+

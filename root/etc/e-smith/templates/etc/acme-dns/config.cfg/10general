@@ -1,0 +1,47 @@
+{
+use esmith::NetworksDB;
+my $ndb = esmith::NetworksDB->open_ro() || die "Can't open networks database: $!\n";
+
+if (length ${'acme-dns'}{'ExternalIP'}) {
+	$ExternalIP = ${'acme-dns'}{'ExternalIP'}
+} else {
+	foreach ($ndb->red()) {
+		$ExternalIP = $_->prop('ipaddr') || next;
+	}
+}
+
+my $domain = "acme.".$DomainName;
+my $nsname = "ns1.acme.".$DomainName;
+my $nsadmin = "admin.".$DomainName;
+my $domaindot = "acme.".$DomainName.".";
+my $nsnamedot = "ns1.acme.".$DomainName.".";
+my $ns2namedot = "ns2.acme.".$DomainName.".";
+
+ $OUT .= <<EOF
+
+[general]
+# dns interface
+listen = "$ExternalIP:1053"
+# protocol, "udp", "udp4", "udp6" or "tcp", "tcp4", "tcp6"
+protocol = "udp"
+# domain name to serve the requests off of
+domain = "$domain"
+# zone name server
+nsname = "$nsname"
+# admin email address, where @ is substituted with .
+nsadmin = "$nsadmin"
+# predefined records served in addition to the TXT
+records = [
+    # default A
+    "$domaindot A $ExternalIP",
+    # A
+    "$nsnamedot A $ExternalIP",
+    "$ns2namedot A $ExternalIP",
+    # NS
+    "$domaindot NS $nsnamedot",
+    "$domaindot NS $ns2namedot",
+]
+# debug messages from CORS etc
+debug = false
+EOF
+}

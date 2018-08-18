@@ -1,0 +1,2 @@
+REDIRECT  net  1053  tcp  53
+REDIRECT  net  1053  udp  53
