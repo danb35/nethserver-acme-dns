@@ -6,7 +6,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
-Source: %{name}-%{version}.tar.bz2
+Source: %{name}-%{version}.tar.gz
 BuildArch: noarch
 
 BuildRequires: nethserver-devtools
