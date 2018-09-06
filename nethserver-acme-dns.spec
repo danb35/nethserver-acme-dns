@@ -1,7 +1,7 @@
 Summary: NethServer configuration for acme-dns
 %define name nethserver-acme-dns
 %define version 0.0.1
-%define release 6
+%define release 7
 Name: %{name}
 Version: %{version}
 Release: %{release}%{?dist}
@@ -40,6 +40,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nseventsdir}/%{name}-update
 
 %changelog
+* Thu Sep  6 2018 Dan Brown <dan@familybrown.org> - 0.0.1-7
+- Added ability to configure domain
+
 * Mon Jun 18 2018 Dan Brown <dan@familybrown.org> - 0.0.1-6.el7
 - Changed default access for API to green
 * Sun Jun 17 2018 Dan Brown <dan@familybrown.org> - 0.0.1-5.el7

@@ -10,12 +10,14 @@ if (length ${'acme-dns'}{'ExternalIP'}) {
 	}
 }
 
-my $domain = "acme.".$DomainName;
-my $nsname = "ns1.acme.".$DomainName;
-my $nsadmin = "admin.".$DomainName;
-my $domaindot = "acme.".$DomainName.".";
-my $nsnamedot = "ns1.acme.".$DomainName.".";
-my $ns2namedot = "ns2.acme.".$DomainName.".";
+my $dmn = ${'acme-dns'}{'Domain'} || $DomainName;
+
+my $domain = "acme.".$dmn;
+my $nsname = "ns1.acme.".$dmn;
+my $nsadmin = "admin.".$dmn;
+my $domaindot = "acme.".$dmn.".";
+my $nsnamedot = "ns1.acme.".$dmn.".";
+my $ns2namedot = "ns2.acme.".$dmn.".";
 
  $OUT .= <<EOF
 
