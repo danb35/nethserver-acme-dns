@@ -1,7 +1,7 @@
 Summary: NethServer configuration for acme-dns
 %define name nethserver-acme-dns
-%define version 0.0.1
-%define release 7
+%define version 0.1.0
+%define release 1
 Name: %{name}
 Version: %{version}
 Release: %{release}%{?dist}
@@ -10,7 +10,7 @@ Source: %{name}-%{version}.tar.gz
 BuildArch: noarch
 
 BuildRequires: nethserver-devtools
-Requires: acme-dns
+Requires: acme-dns >= 0.7
 #AutoReq: no
 
 %description
@@ -40,6 +40,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nseventsdir}/%{name}-update
 
 %changelog
+* Wed Mar  6 2019 Dan Brown <dan@familybrown.org> - 0.1.0-1
+- Update for acme-dns 0.7, allow TCP and UDP connections
+
 * Thu Sep  6 2018 Dan Brown <dan@familybrown.org> - 0.0.1-7
 - Added ability to configure domain
 

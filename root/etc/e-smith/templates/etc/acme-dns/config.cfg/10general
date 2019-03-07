@@ -25,7 +25,7 @@ my $ns2namedot = "ns2.acme.".$dmn.".";
 # dns interface
 listen = "$ExternalIP:1053"
 # protocol, "udp", "udp4", "udp6" or "tcp", "tcp4", "tcp6"
-protocol = "udp"
+protocol = "both"
 # domain name to serve the requests off of
 domain = "$domain"
 # zone name server
