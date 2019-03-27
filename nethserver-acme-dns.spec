@@ -1,16 +1,19 @@
 Summary: NethServer configuration for acme-dns
 %define name nethserver-acme-dns
 %define version 0.1.0
-%define release 2
+%define release 3
 Name: %{name}
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
 BuildArch: noarch
+URL: https://wiki.nethserver.org/doku.php?id=userguide:let_s_encrypt_acme-dns
+URL: https://github.com/danb35/nethserver-acme-dns
 
 BuildRequires: nethserver-devtools
 Requires: acme-dns >= 0.7
+Requires: nethserver-release = 7
 #AutoReq: no
 
 %description
@@ -40,6 +43,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nseventsdir}/%{name}-update
 
 %changelog
+* Wed Mar 27 2019 Dan Brown <dan@familybrown.org> 0.1.0-3.ns7
+- Add README
+- Add config option to disable API registration
+
 * Thu Mar 21 2019 Dan Brown <dan@familybrown.org> - 0.1.0-2.ns7
 - Change ownership of /etc/acme-dns/config.cfg to acme-dns user
 
