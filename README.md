@@ -2,7 +2,7 @@
 NethServer configuration for acme-dns (https://github.com/joohoi/acme-dns)
 
 ## Description
-This package configures Nethserver 7 for acme-dns.  It contains templates for the acme-dns config file and the firewall configuration, as well as events to rebuild those files and restart the relevant services.
+This package configures Nethserver 7 for acme-dns.  It contains templates for the acme-dns config file and the firewall configuration, as well as events to rebuild those files and restart the relevant services.  For further information on the purpose and usage of this package, see https://wiki.nethserver.org/doku.php?id=userguide:let_s_encrypt_acme-dns.
 
 This will configure acme-dns to act as the authoritative nameserver for `acme.`yourdomain.
 
