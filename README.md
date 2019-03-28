@@ -27,5 +27,6 @@ This package defines two configuration database keys, `acme-dns` and `acme-dns-a
 |FullchainPath|none|Path to the full certificate chain--the server cert as well as any intermediates.|
 |KeyPath|none|Path to the private key for the API|
 |DisableRegistration|false|Disable new registrations to this instance of acme-dns.  If set to "true", will prevent issuance for any domains not already registered.|
+|access|green|Which networks can access the API.  To access the API from the Internet, set to "green,red".|
 
 After changing any configuration properties, rebuild the configuration file and restart the services with `signal-event nethserver-acme-dns-update`.
