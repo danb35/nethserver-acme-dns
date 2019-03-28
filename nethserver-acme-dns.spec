@@ -8,7 +8,6 @@ Release: %{release}%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
 BuildArch: noarch
-URL: https://wiki.nethserver.org/doku.php?id=userguide:let_s_encrypt_acme-dns
 URL: https://github.com/danb35/nethserver-acme-dns
 
 BuildRequires: nethserver-devtools
