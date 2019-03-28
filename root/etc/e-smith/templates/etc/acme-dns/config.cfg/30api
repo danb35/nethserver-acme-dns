@@ -1,6 +1,7 @@
 {
 
 my $tls = (${'acme-dns-api'}{'UseTLS'} && ${'acme-dns-api'}{'UseTLS'} eq 'enabled') ? 'cert' : 'none';
+my $dr = ${'acme-dns-api'}{'DisableRegistration'} || "false";
 
  $OUT .= <<EOF
 
@@ -10,7 +11,7 @@ api_domain = ""
 # listen ip eg. 127.0.0.1
 ip = "0.0.0.0"
 # disable registration endpoint
-disable_registration = ${'acme-dns-api'}{'DisableRegistration'} || false
+disable_registration = $dr
 # autocert HTTP port, eg. 80 for answering Let's Encrypt HTTP-01 challenges. Mandatory if using tls = "letsencrypt".
 # autocert_port = "80"
 # listen port, eg. 443 for default HTTPS

@@ -1,7 +1,7 @@
 Summary: NethServer configuration for acme-dns
 %define name nethserver-acme-dns
 %define version 0.1.0
-%define release 3
+%define release 4
 Name: %{name}
 Version: %{version}
 Release: %{release}%{?dist}
@@ -42,6 +42,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nseventsdir}/%{name}-update
 
 %changelog
+* Thu Mar 28 2019 Dan Brown <dan@familybrown.org> 0.1.0-4.ns7
+- Fix logic for DisableRegistration
+
 * Wed Mar 27 2019 Dan Brown <dan@familybrown.org> 0.1.0-3.ns7
 - Add README
 - Add config option to disable API registration
