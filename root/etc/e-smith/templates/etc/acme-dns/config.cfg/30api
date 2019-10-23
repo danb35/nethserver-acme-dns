@@ -36,7 +36,7 @@ EOF
 } elsif (($tls_type eq 'letsencrypt') || ($tls_type eq 'letsencryptstaging')) {
  $OUT .= <<EOF;
 # only used if tls = "letsencrypt"
-acme_cache_dir = "api-certs"
+acme_cache_dir = "/etc/acme-dns/api-certs"
 EOF
 }
 
