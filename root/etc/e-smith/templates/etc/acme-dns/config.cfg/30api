@@ -1,26 +1,44 @@
 {
 
-my $tls = (${'acme-dns-api'}{'UseTLS'} && ${'acme-dns-api'}{'UseTLS'} eq 'enabled') ? 'cert' : 'none';
+if (${'acme-dns-api'}{'UseTLS'} eq 'disabled') {
+	my $tls = 'none'
+} elsif (${'acme-dns-api'}{'TLSType'} eq 'staging') {
+	my $tls = 'letsencryptstaging'
+} elsif (${'acme-dns-api'}{'TLSType'} eq 'letsencrypt') {
+	my $tls = 'letsencrypt'
+} elsif (${'acme-dns-api'}{'TLSType'} eq 'cert') {
+	my $tls = 'cert'
+}
+
 my $dr = ${'acme-dns-api'}{'DisableRegistration'} || "false";
 
  $OUT .= <<EOF
 
 [api]
-# domain name to listen requests for, mandatory if using tls = "letsencrypt"
-api_domain = ""
 # listen ip eg. 127.0.0.1
 ip = "0.0.0.0"
 # disable registration endpoint
 disable_registration = $dr
-# autocert HTTP port, eg. 80 for answering Let's Encrypt HTTP-01 challenges. Mandatory if using tls = "letsencrypt".
-# autocert_port = "80"
 # listen port, eg. 443 for default HTTPS
 port = "${'acme-dns-api'}{'TCPPort'}"
-# possible values: "letsencrypt", "cert", "none"
+# possible values: "letsencrypt", "letsencryptstaging", "cert", "none"
 tls = "$tls"
+EOF
+
+if ($tls eq 'cert') {
+ $OUT .= <<EOF
 # only used if tls = "cert"
 tls_cert_privkey = "${'acme-dns-api'}{'KeyPath'}"
 tls_cert_fullchain = "${'acme-dns-api'}{'FullchainPath'}"
+EOF
+} elsif ($tls eq 'letsencrypt') || ($tls eq 'letsencryptstaging') {
+ $OUT .= <<EOF
+# only used if tls = "letsencrypt"
+acme_cache_dir = "api-certs"
+EOF
+}
+
+ $OUT .= <<EOF
 # CORS AllowOrigins, wildcards can be used
 corsorigins = [
     "*"

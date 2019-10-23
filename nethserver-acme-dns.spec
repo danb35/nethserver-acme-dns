@@ -1,7 +1,7 @@
 Summary: NethServer configuration for acme-dns
 %define name nethserver-acme-dns
-%define version 0.1.0
-%define release 4
+%define version 0.2.0
+%define release 1
 Name: %{name}
 Version: %{version}
 Release: %{release}%{?dist}
@@ -11,7 +11,7 @@ BuildArch: noarch
 URL: https://github.com/danb35/nethserver-acme-dns
 
 BuildRequires: nethserver-devtools
-Requires: acme-dns >= 0.7
+Requires: acme-dns >= 0.8
 Requires: nethserver-release = 7
 #AutoReq: no
 
@@ -42,6 +42,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nseventsdir}/%{name}-update
 
 %changelog
+* Wed Oct 23 2019 Dan Brown <dan@familybrown.org> 0.2.0-1.ns7
+- Update to acme-dns >= 0.8
+- By default, acme-dns obtains its own cert
+
 * Thu Mar 28 2019 Dan Brown <dan@familybrown.org> 0.1.0-4.ns7
 - Fix logic for DisableRegistration
 
