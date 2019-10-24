@@ -22,10 +22,10 @@ This package defines two configuration database keys, `acme-dns` and `acme-dns-a
 
 |Property|Default|Description|
 |-----|-----|-----|
-|TCPPort|8675|Port on which the API will listen.  The API will only listen on one port, and will only do HTTP **or** HTTPS, not both.|
+|TCPPort|8675|Port on which the API will listen.  The API will only listen on one port, and will only do HTTP **or** HTTPS, not both (it will use HTTPS by default).|
 |UseTLS|enabled|Serve the API over HTTPS rather than HTTP.  Set to "disabled" to disable (not recommended).|
 |TLSType|staging|Source of TLS certificate.  Valid values are "staging" (use the Let's Encrypt staging server to avoid exceeding rate limits when testing), "letsencrypt" (obtain a production Let's Encrypt certificate), and "cert" (provide your own certificate using the FullchainPath and KeyPath keys).|
-|FullchainPath|none|Path to the full certificate chain--the server cert as well as any intermediates.|
+|FullchainPath|none|Path to the full certificate chain--the server cert as well as any intermediates.  This property, and KeyPath, are only used when `TLSType` is set to `cert`.|
 |KeyPath|none|Path to the private key for the API|
 |DisableRegistration|false|Disable new registrations to this instance of acme-dns.  If set to "true", will prevent issuance for any domains not already registered.|
 |access|green|Which networks can access the API.  To access the API from the Internet, set to "green,red".|

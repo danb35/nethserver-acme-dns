@@ -14,7 +14,7 @@ if (${'acme-dns-api'}{'UseTLS'} eq 'disabled') {
 
 my $dr = ${'acme-dns-api'}{'DisableRegistration'} || "false";
 
- $OUT .= <<EOF;
+ $OUT .= <<"EOF";
 
 [api]
 # listen ip eg. 127.0.0.1
@@ -28,19 +28,19 @@ tls = "$tls_type"
 EOF
 
 if ($tls_type eq 'cert') {
- $OUT .= <<EOF;
+ $OUT .= <<"EOF";
 # only used if tls = "cert"
 tls_cert_privkey = "${'acme-dns-api'}{'KeyPath'}"
 tls_cert_fullchain = "${'acme-dns-api'}{'FullchainPath'}"
 EOF
 } elsif (($tls_type eq 'letsencrypt') || ($tls_type eq 'letsencryptstaging')) {
- $OUT .= <<EOF;
+ $OUT .= <<"EOF";
 # only used if tls = "letsencrypt"
 acme_cache_dir = "/etc/acme-dns/api-certs"
 EOF
 }
 
- $OUT .= <<EOF;
+ $OUT .= <<"EOF";
 # CORS AllowOrigins, wildcards can be used
 corsorigins = [
     "*"

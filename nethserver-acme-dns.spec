@@ -31,7 +31,7 @@ perl createlinks
 
 %install
 rm -rf $RPM_BUILD_ROOT
-(cd root   ; find . -depth -print | cpio -dump $RPM_BUILD_ROOT)
+(cd root; find . -depth -print | cpio -dump $RPM_BUILD_ROOT)
 
 %{genfilelist} %{buildroot} $RPM_BUILD_ROOT > default.lst
 
@@ -42,7 +42,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nseventsdir}/%{name}-update
 
 %changelog
-* Wed Oct 23 2019 Dan Brown <dan@familybrown.org> 0.2.0-1.ns7
+* Thu Oct 24 2019 Dan Brown <dan@familybrown.org> 0.2.0-1.ns7
 - Update to acme-dns >= 0.8
 - By default, acme-dns obtains its own cert
 
